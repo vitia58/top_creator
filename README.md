@@ -20,7 +20,7 @@ This project is a server application designed to generate fake customer data and
 1. Clone the repository:
    ```bash
    git clone https://github.com/vitia58/top_creator
-   cd https://github.com/vitia58/top_creator
+   cd top_creator
    ```
 
 2. Install the necessary packages:
@@ -62,4 +62,4 @@ npm run start
 - **server.ts**: The main server file that handles client requests and processes customer data.
 - **customer.model.ts**: Defines the MongoDB schemas for customer data. 
   - **CustomerSchema**: The schema for storing detailed customer information, including name, email, and address. 
-  - **CustomerAnonymisedModel**: A clone of the `CustomerSchema` used to store anonymized customer data, ensuring sensitive information is protected.
+  - **CustomerAnonymisedModel**: A identical with `CustomerSchema` used to store anonymized customer data, ensuring sensitive information is protected.
