@@ -60,12 +60,6 @@ npm run start
 ## Project Structure
 
 - **server.ts**: The main server file that handles client requests and processes customer data.
-- **Client Component**: Interface for sending customer data to the server.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-This README provides a clear overview of your project, including setup instructions, features, and usage details.
+- **customer.model.ts**: Defines the MongoDB schemas for customer data. 
+  - **CustomerSchema**: The schema for storing detailed customer information, including name, email, and address. 
+  - **CustomerAnonymisedModel**: A clone of the `CustomerSchema` used to store anonymized customer data, ensuring sensitive information is protected.
