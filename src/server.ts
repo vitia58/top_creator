@@ -66,6 +66,7 @@ const nameGenerator = customAlphabet(
 
 const anonymiseCustomer = (customer: TCustomer) => {
   const newCustomer: TCustomer = {
+    _id: customer._id,
     firstName: nameGenerator(),
     lastName: nameGenerator(),
     email: `${nameGenerator()}${customer.email.match(/@.*/)?.[0] ?? ''}`,
@@ -94,10 +95,39 @@ app.use(bodyParser.json());
 app.post('/', async (req: Request, res: Response) => {
   try {
     const customersData: TCustomer[] = req.body.customers;
+    customersData.forEach((customer) => {
+      customer._id = new mongoose.Types.ObjectId();
+    });
+
     CustomerModel.insertMany(customersData, { ordered: true });
 
     const anonymisedCustomers = customersData.map(anonymiseCustomer);
     CustomerAnonymisedModel.insertMany(anonymisedCustomers, { ordered: true });
+
+    res.status(201);
+  } catch (error) {
+    console.error('Error saving customers:', error);
+    res.status(500).json({ error: 'Failed to save customers' });
+  }
+});
+app.patch('/', async (req: Request, res: Response) => {
+  try {
+    const customersData: TCustomer[] = req.body.customers;
+
+    await Promise.allSettled(
+      customersData.map((customer) =>
+        CustomerModel.findByIdAndUpdate(customer._id, customer)
+      )
+    );
+
+    await Promise.allSettled(
+      customersData.map((customer) =>
+        CustomerAnonymisedModel.findByIdAndUpdate(
+          customer._id,
+          anonymiseCustomer(customer)
+        )
+      )
+    );
 
     res.status(201);
   } catch (error) {

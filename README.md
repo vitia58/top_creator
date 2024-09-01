@@ -19,8 +19,8 @@ This project is a server application designed to generate fake customer data and
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
-   cd <repository-directory>
+   git clone https://github.com/vitia58/top_creator
+   cd https://github.com/vitia58/top_creator
    ```
 
 2. Install the necessary packages:
@@ -55,7 +55,7 @@ npm run start
 ## Usage
 
 - The client sends a bulk object of 1-10 customer objects to the server.
-- The server receives this data, adds it to the primary database, and creates anonymized versions in a separate collection.
+- The server receives this data, adds it to the primary database, and creates anonymized versions in a separate collection. Additionaly it can update exsiting objects by id
 
 ## Project Structure
 

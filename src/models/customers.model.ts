@@ -10,6 +10,7 @@ type TAddress = {
 };
 
 export type TCustomer = {
+  _id?: any;
   firstName: string;
   lastName: string;
   email: string;
