@@ -28,7 +28,7 @@ This project is a server application designed to generate fake customer data and
    npm install
    ```
 
-### Build the Project
+3. Build the Project
 
 Before running the server, you need to build the project:
 
@@ -36,7 +36,7 @@ Before running the server, you need to build the project:
 npm run build
 ```
 
-### Configuration
+4. Configuration
 
 Update the `.env` file with your MongoDB connection URL:
 
@@ -44,7 +44,7 @@ Update the `.env` file with your MongoDB connection URL:
 DB_URI=<your-mongodb-url>
 ```
 
-### Running the Server
+5. Running the Server
 
 To start the server, run:
 
@@ -54,7 +54,7 @@ npm run start
 
 ## Usage
 
-- The client sends a bulk object of 1-10 customer objects to the server.
+- The client sends a bulk object of 1-10 customer objects to the server every 200ms.
 - The server receives this data, adds it to the primary database, and creates anonymized versions in a separate collection. Additionaly it can update exsiting objects by id
 
 ## Project Structure
